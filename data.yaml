@@ -1,0 +1,15 @@
+# Blood Cell Count Dataset (BCCD) configuration
+# Download dataset from:
+#   https://universe.roboflow.com/roboflow-100/bccd-yfzgt
+# Place extracted folders inside data/
+
+path: data          # root folder
+train: train/images
+val:   valid/images
+test:  test/images
+
+nc: 3
+names:
+  0: Platelets
+  1: RBC
+  2: WBC
