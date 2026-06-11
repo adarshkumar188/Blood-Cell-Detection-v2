@@ -5,4 +5,7 @@ numpy>=1.26.0
 matplotlib>=3.8.0
 reportlab>=4.1.0
 Pillow>=10.0.0
+<<<<<<< HEAD
 gunicorn>=20.1.0
+=======
+>>>>>>> b5506607c79532325df1ffc7a1160ab616ed6c3e
