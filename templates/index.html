@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Cell Detection & Counting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="dashboard">
+    <div class="panel">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>🩸 Blood Cell Detection</h1>
+            <p class="subtitle">YOLO-based RBC · WBC · Platelets Analysis</p>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <label class="file-label" for="imageInput">
+                📂 Choose Blood Smear Image
+            </label>
+            <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
+            <button id="analyzeBtn" onclick="uploadImage()">🔬 Analyze Image</button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <span>Analyzing cells...</span>
+        </div>
+
+        <!-- Error Banner -->
+        <div id="errorBanner" class="error-banner hidden"></div>
+
+        <!-- Image Preview -->
+        <div class="image-box" id="imageBox">
+            <div id="placeholder">
+                <span>🖼️</span>
+                <p>Upload a blood smear image</p>
+                <small>Supports JPG, PNG</small>
+            </div>
+            <img id="preview" alt="Processed Preview">
+        </div>
+
+        <!-- Cell Counts -->
+        <div class="counts">
+            <div class="card rbc">
+                <div class="cell-icon">🔴</div>
+                <h3>RBC</h3>
+                <span id="rbcCount">—</span>
+                <small>Red Blood Cells</small>
+            </div>
+            <div class="card wbc">
+                <div class="cell-icon">🔵</div>
+                <h3>WBC</h3>
+                <span id="wbcCount">—</span>
+                <small>White Blood Cells</small>
+            </div>
+            <div class="card platelets">
+                <div class="cell-icon">🟡</div>
+                <h3>Platelets</h3>
+                <span id="plateletCount">—</span>
+                <small>Thrombocytes</small>
+            </div>
+        </div>
+
+        <!-- Total count -->
+        <div id="totalBar" class="total-bar hidden">
+            Total Detected: <strong id="totalCount">0</strong> cells
+        </div>
+
+        <!-- Download Report -->
+        <a href="/download-report" id="downloadLink" class="hidden">
+            <button class="download">📄 Download PDF Report</button>
+        </a>
+
+        <p class="disclaimer">For research & educational use only. Not a medical device.</p>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

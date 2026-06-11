@@ -1,0 +1,204 @@
+/* ─── RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    min-height: 100vh;
+    background-image: url("/static/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    color: #1a1a2e;
+}
+
+/* ─── LAYOUT ────────────────────────────────────────── */
+.dashboard {
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 28px 36px;
+}
+
+/* ─── PANEL ─────────────────────────────────────────── */
+.panel {
+    width: 430px;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 20px;
+    padding: 24px 22px 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(255,255,255,0.5) inset;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ─── HEADER ─────────────────────────────────────────── */
+.header h1 {
+    font-size: 21px;
+    font-weight: 700;
+    color: #c0392b;
+}
+
+.header .subtitle {
+    font-size: 12.5px;
+    color: #666;
+    margin-top: 3px;
+}
+
+/* ─── UPLOAD ─────────────────────────────────────────── */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input[type="file"] { display: none; }
+
+.file-label {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+    background: #f0f4ff;
+    border: 2px dashed #a0b4d6;
+    border-radius: 10px;
+    font-size: 13px;
+    color: #3a5ea0;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.file-label:hover { background: #dce8ff; border-color: #4c7fc4; }
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #1e9aff, #0d74cc);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s, transform 0.1s;
+}
+button:hover   { opacity: 0.92; transform: translateY(-1px); }
+button:active  { transform: translateY(0); }
+button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ─── LOADER ─────────────────────────────────────────── */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+.spinner {
+    width: 20px; height: 20px;
+    border: 3px solid #dde;
+    border-top-color: #1e9aff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── ERROR ──────────────────────────────────────────── */
+.error-banner {
+    background: #fff0f0;
+    border-left: 4px solid #e63946;
+    color: #c0392b;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+/* ─── IMAGE BOX ──────────────────────────────────────── */
+.image-box {
+    width: 100%;
+    height: 220px;
+    background: #f5f7fb;
+    border: 2px solid #d4dce8;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#placeholder {
+    text-align: center;
+    color: #888;
+    user-select: none;
+}
+#placeholder span { font-size: 36px; display: block; margin-bottom: 6px; }
+#placeholder p    { font-size: 14px; font-weight: 500; color: #555; }
+#placeholder small { font-size: 11px; color: #aaa; }
+
+.image-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: none;
+    border-radius: 10px;
+}
+
+/* ─── COUNTS ─────────────────────────────────────────── */
+.counts {
+    display: flex;
+    gap: 10px;
+}
+
+.card {
+    flex: 1;
+    padding: 10px 6px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.cell-icon { font-size: 18px; }
+.card h3   { font-size: 12px; font-weight: 600; opacity: 0.9; }
+.card span { font-size: 24px; font-weight: 800; line-height: 1; }
+.card small { font-size: 10px; opacity: 0.75; }
+
+.rbc      { background: linear-gradient(135deg, #e63946, #b5222f); }
+.wbc      { background: linear-gradient(135deg, #1e9aff, #0d74cc); }
+.platelets { background: linear-gradient(135deg, #f4b400, #d49a00); }
+
+/* ─── TOTAL BAR ──────────────────────────────────────── */
+.total-bar {
+    background: #f0fff4;
+    border-left: 4px solid #2ca02c;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #1a6e1a;
+}
+
+/* ─── DOWNLOAD ───────────────────────────────────────── */
+a { text-decoration: none; }
+
+.download {
+    background: linear-gradient(135deg, #2ca02c, #217321);
+}
+
+/* ─── DISCLAIMER ─────────────────────────────────────── */
+.disclaimer {
+    font-size: 10.5px;
+    color: #bbb;
+    text-align: center;
+}
+
+/* ─── UTILITY ────────────────────────────────────────── */
+.hidden { display: none !important; }
